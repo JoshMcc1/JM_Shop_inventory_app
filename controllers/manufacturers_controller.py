@@ -44,7 +44,7 @@ def update_manufacturer(id):
     name = request.form["name"]
     country_of_origin = request.form["country_of_origin"]
     operating_status = bool(int(request.form["operating_status"]))
-    manufacturer = Manufacturer(name, country_of_origin, operating_status)
+    manufacturer = Manufacturer(name, country_of_origin, operating_status, id)
     manufacturer_repository.update_manufacturer(manufacturer)
     return redirect("/manufacturers")
 

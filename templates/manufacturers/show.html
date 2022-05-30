@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+{% block content%}
+
+<div>
+    <h2>Manufacturer Name: {{manufacturer.name}}</h2>
+    <p>Country of Origin{{manufacturer.country_of_origin}}</p>
+    <p>Operating Status: {{manufacturer.operating_status}}</p>
+
+    <p><a href="/manufacturers/{{manufacturer.id}}/edit">Edit Product</a></p>
+
+
+</div>
+{% endblock %}

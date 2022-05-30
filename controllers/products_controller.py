@@ -1,27 +1,82 @@
+from genericpath import exists
 from flask import Flask, redirect, render_template, Blueprint, request
 import repositories.product_repository as product_repository
 import repositories.manufacturer_repository as manufacturer_repository
 from models.product import Product
+import pdb
 
 product_blueprint = Blueprint("products", __name__)
 
 
 @product_blueprint.route("/products")
 def get_products():
+    filter = None
+    manufacturers = manufacturer_repository.select_all_manufacturers()
     products = product_repository.select_all_products()
-    return render_template("/products/index.html", products=products)
+    active_products = []
+    for product in products:
+        if product.manufacturer.operating_status == True:
+            active_products.append(product)
+
+    return render_template(
+        "/products/index.html",
+        products=active_products,
+        filter=filter,
+        manufacturers=manufacturers,
+    )
+
+
+@product_blueprint.route("/products/type", methods=["POST"])
+def get_products_by_type():
+    filter = request.form["type"]
+    manufacturers = manufacturer_repository.select_all_manufacturers()
+    products = product_repository.select_all_products()
+    active_products = []
+    for product in products:
+        if product.manufacturer.operating_status == True:
+            active_products.append(product)
+
+    return render_template(
+        "/products/index.html",
+        products=active_products,
+        filter=filter,
+        manufacturers=manufacturers,
+    )
+
+
+@product_blueprint.route("/products/manufacturer", methods=["POST"])
+def get_products_by_manufacturer():
+    filter = request.form["manufacturer"]
+    manufacturers = manufacturer_repository.select_all_manufacturers()
+    products = product_repository.select_all_products()
+    active_products = []
+    for product in products:
+        if product.manufacturer.operating_status == True:
+            active_products.append(product)
+
+    return render_template(
+        "/products/index.html",
+        products=active_products,
+        filter=filter,
+        manufacturers=manufacturers,
+    )
 
 
 @product_blueprint.route("/products/<id>", methods=["GET"])
 def show_product(id):
     product = product_repository.select_product(id)
-    return render_template("products/show.html", product=product)
+    mark_up = product.calculate_markup()
+    return render_template("products/show.html", product=product, mark_up=mark_up)
 
 
 @product_blueprint.route("/products/new")
 def add_product():
     manufacturers = manufacturer_repository.select_all_manufacturers()
-    return render_template("/products/new.html", manufacturers=manufacturers)
+    active_manufacturers = []
+    for manufacturer in manufacturers:
+        if manufacturer.operating_status == True:
+            active_manufacturers.append(manufacturer)
+    return render_template("/products/new.html", manufacturers=active_manufacturers)
 
 
 @product_blueprint.route("/products", methods=["POST"])
@@ -55,6 +110,10 @@ def create_product():
 def edit_product(id):
     product = product_repository.select_product(id)
     manufacturers = manufacturer_repository.select_all_manufacturers()
+    active_manufacturers = []
+    for manufacturer in manufacturers:
+        if manufacturer.operating_status == True:
+            active_manufacturers.append(manufacturer)
     return render_template(
         "/products/edit.html", product=product, manufacturers=manufacturers
     )

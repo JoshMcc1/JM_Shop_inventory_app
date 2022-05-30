@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block content%}
+{% for manufacturer in manufacturers %}
+<div>
+    <div>
+
+        <div>
+            <a href="/manufacturers/{{manufacturer.id}}">{{manufacturer.name}}</a>
+            <span>{{manufacturer.country_of_origin}}</span>
+
+        </div>
+        <div>
+            <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
+                <button type="submit" value="Delete Product">delete</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock%}
