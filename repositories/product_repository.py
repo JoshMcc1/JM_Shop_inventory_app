@@ -32,7 +32,7 @@ def select_all_products():
 
 def select_product(id):
     product = None
-    sql = "SELECT * FROM products WHERE id = ?"
+    sql = "SELECT * FROM products WHERE id=?"
     values = [id]
     result = run_sql(sql, values)[0]
 

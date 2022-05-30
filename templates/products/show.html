@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block content%}
+
+<div>
+    <h2>{{product.manufacturer.name}} {{product.name}}</h2>
+    <p>{{product.description}}</p>
+    <p>{{product.stock_quantity}}</p>
+    <p>{{product.buying_cost}}</p>
+    <p>{{product.selling_cost}}</p>
+    <P>{{product.horse_power}}</P>
+    <p>{{product.top_speed}}</p>
+    <p>{{product.type}}</p>
+
+
+</div>
+{% endblock %}

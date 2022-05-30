@@ -18,13 +18,13 @@ def show_product(id):
     return render_template("products/show.html", product=product)
 
 
-@product_blueprint.route("/books/new")
+@product_blueprint.route("/products/new")
 def add_product():
     manufacturers = manufacturer_repository.select_all_manufacturers()
-    return render_template("/books/new.html", manufacturers=manufacturers)
+    return render_template("/products/new.html", manufacturers=manufacturers)
 
 
-@product_blueprint.route("/books", methods=["POST"])
+@product_blueprint.route("/products", methods=["POST"])
 def create_product():
     name = request.form["name"]
     description = request.form["description"]
@@ -48,7 +48,7 @@ def create_product():
         type,
     )
     product_repository.save_product(product)
-    return redirect("/books")
+    return redirect("/products")
 
 
 @product_blueprint.route("/products/<id>/edit", methods=["GET"])
@@ -88,7 +88,7 @@ def update_product(id):
     return redirect("/products")
 
 
-@product_blueprint.route("/books/<id>/delete", methods=["POST"])
+@product_blueprint.route("/products/<id>/delete", methods=["POST"])
 def delete_product(id):
     product_repository.delete_product(id)
     return redirect("/products")

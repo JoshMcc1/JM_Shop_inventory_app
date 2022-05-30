@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block content%}
+{% for product in products%}
+<div>
+    <div>
+
+        <div>
+            <a href="/products/{{product.id}}">{{product.manufacturer.name}} {{product.name}}</a>
+            <span>{{product.stock_quantity}}</span>
+            <span>{{product.selling_cost}}</span>
+        </div>
+        <div>
+            <form action="/product/{{product.id}}/delete" method="POST">
+                <button type="submit" value="Delete Product">delete</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

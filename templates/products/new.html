@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{% block content %}
+<form action="/products" method="post">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="name" required autofocus>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="description" rows="6" cols="60"></textarea>
+        <div>
+            <label for="stock_quantity">Stock Quantity</label>
+            <input type="number" id="stock_quantity" name="stock_quantity" placeholder="stock_quantity" required>
+        </div>
+        <div>
+            <label for="buying_cost">Buying Cost</label>
+            <input type="number" id="buying_cost" name="buying_cost" placeholder="buying_cost" required>
+        </div>
+        <div>
+            <label for="selling_cost">Selling Cost</label>
+            <input type="number" id="selling_cost" name="selling_cost" placeholder="selling_cost" required>
+        </div>
+        <div>
+            <label for="manufacturer">Manufacturer</label>
+            <select id="manufacturer" name="manufacturer_id">
+                {% for manufacturer in manufacturers %}
+                <option value="{{manufacturer.id}}">{{manufacturer.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="horse_power">Horse Power</label>
+            <input type="number" id="horse_power" name="horse_power" placeholder="horse_power" required>
+        </div>
+        <div>
+            <label for="top_speed">Top Speed</label>
+            <input type="number" id="top_speed" name="top_speed" placeholder="top_speed" required>
+        </div>
+        <div>
+            <label for="type">Type</label>
+            <select id="type" name="type">
+                <option value="Car">Car</option>
+                <option value="SUV">SUV</option>
+                <option value="Van">Van</option>
+                <option value="Motorbike">Motorbike</option>
+                <option value="Truck">Truck</option>
+                <option value="People Carrier">People Carrier</option>
+            </select>
+        </div>
+
+        <button type="submit">Add Product</button>
+
+
+
+
+
+</form>
+
+
+{% endblock %}
