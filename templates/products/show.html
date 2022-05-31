@@ -6,15 +6,19 @@
 <div>
     <h2>Vehicle: {{product.manufacturer.name}} {{product.name}}</h2>
     <p>Description: {{product.description}}</p>
-    <p>Stock Level: {{product.stock_quantity}}</p>
-    <p>Buying Cost: £{{product.buying_cost}}</p>
-    <p>Selling Cost: £{{product.selling_cost}}</p>
-    <P>Horse Power: {{product.horse_power}}</P>
-    <p>Top Speed: {{product.top_speed}}MPH</p>
-    <p>Vehicle Type: {{product.type}}</p>
-    <p>Mark-up: £{{mark_up}}</p>
-    <p><a href="/products/{{product.id}}/edit">Edit Product</a></p>
-
-
+    {% if product.stock_quantity < 5 %} <p style="color:orange;">Stock Level:
+        {{product.stock_quantity}}</p>
+        {% elif product.stock_quantity == 0 %}
+        <p style="color:red;">Stock Level: {{product.stock_quantity}}</p>
+        {% else %}
+        <p style="color:green;">Stock Level: {{product.stock_quantity}}</p>
+        {% endif %}
+        <p>Buying Cost: £{{product.buying_cost}}</p>
+        <p>Selling Cost: £{{product.selling_cost}}</p>
+        <P>Horse Power: {{product.horse_power}}</P>
+        <p>Top Speed: {{product.top_speed}}MPH</p>
+        <p>Vehicle Type: {{product.type}}</p>
+        <p>Mark-up: £{{mark_up}}</p>
+        <p><a href="/products/{{product.id}}/edit">Edit Product</a></p>
 </div>
 {% endblock %}

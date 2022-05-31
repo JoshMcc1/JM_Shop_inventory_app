@@ -1,5 +1,4 @@
 from flask import Flask, redirect, render_template, Blueprint, request
-import repositories.product_repository as product_repository
 import repositories.manufacturer_repository as manufacturer_repository
 from models.manufacturer import Manufacturer
 

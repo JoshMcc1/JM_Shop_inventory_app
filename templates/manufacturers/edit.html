@@ -13,8 +13,9 @@
     <div clas="item-new">
         <label for="operating_status">Operating Status</label>
         <select id="operating_status" name="operating_status" value="{{manufacturer.operating_status}}">
-            <option value="1">True</option>
-            <option value="0">False</option>
+            <option {% if manufacturer.operating_status==True %} selected="selected" {% endif %} value="1">True</option>
+            <option {% if manufacturer.operating_status==False %} selected="selected" {% endif %} value="0">False
+            </option>
         </select>
     </div>
 

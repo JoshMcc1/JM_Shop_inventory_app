@@ -4,7 +4,7 @@ body {
     font-size: 16px;
     height: 100%;
     color: #351431;
-    background-color: rgb(189, 198, 150, 0.7);
+    background-color: rgb(189, 198, 150, 0.4);
 }
 
 body>div {
@@ -17,38 +17,11 @@ body {
     flex-direction: column;
 }
 
-.product {
-    border: 1px solid #ccc;
-    width: 300px;
-    min-height: 68px;
-    padding: 10px;
-    display: flex;
-    flex-flow: row wrap;
-    margin: 10px;
-
-}
-
-.name {
-    font-weight: bold;
-    margin-bottom: 0.5em;
-    margin-right: 0.3em;
-}
-
-.duration {
-    color: #8899A6;
-    font-size: 13px;
-    margin-left: 20px;
-}
-
 .buttons {
     margin-top: 10px;
     margin-left: 2px;
     font-size: 1.4em;
     color: black;
-}
-
-.buttons i {
-    width: 80px;
 }
 
 input,
@@ -59,15 +32,6 @@ button {
     padding: 10px;
     margin: 10px;
     box-sizing: border-box;
-}
-
-.trash-button {
-    display: contents;
-    font-size: 65%;
-}
-
-.delete-form {
-    display: inline;
 }
 
 .menu {
@@ -109,11 +73,6 @@ button {
     /* (100-32*3)/2 */
 }
 
-.header {
-    margin: 0;
-    padding: 0;
-}
-
 .filter {
     display: flex;
     flex-wrap: wrap;
@@ -124,18 +83,9 @@ button {
 
 .filter-item {
     flex-direction: column;
-    width: 30%;
+    width: 40%;
 }
 
-
-.hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
 
 footer {
     display: flex;
@@ -159,4 +109,14 @@ footer {
 .item-new {
     height: auto;
     margin-bottom: 10px;
+}
+
+a {
+    color: #351431;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #351431;
+    text-decoration-line: underline;
 }

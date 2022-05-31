@@ -1,9 +1,7 @@
-from genericpath import exists
 from flask import Flask, redirect, render_template, Blueprint, request
 import repositories.product_repository as product_repository
 import repositories.manufacturer_repository as manufacturer_repository
 from models.product import Product
-import pdb
 
 product_blueprint = Blueprint("products", __name__)
 

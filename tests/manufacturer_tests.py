@@ -15,8 +15,3 @@ class TestManufacturer(unittest.TestCase):
     def test_set_operating_status_true(self):
         self.manufacturer_2.set_operating_status_true()
         self.assertEqual(True, self.manufacturer_2.operating_status)
-
-    def test_get_active_manufacturers(self):
-        self.assertEqual(
-            1,
-        )

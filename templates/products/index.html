@@ -24,91 +24,102 @@
                 <label for="manufacturer">Filter by Manufacturer</label>
                 <select id="manufacturer" name="manufacturer">
                     {% for manufacturer in manufacturers%}
+                    {% if manufacturer.operating_status == True %}
                     <option value="{{manufacturer.name}}">{{manufacturer.name}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <button class="buttons" type="submit">Filter</button>
             </form>
         </div>
 
+        <br>
 
-
-    </div>
-    <div>
-        <hr class="hr">
-        <hr class="hr">
-    </div>
-
-
-
-
-
-
-
-
-    {% for product in products%}
-    {% if filter == None%}
-    <div class="item">
-        <div>
-
+        {% for product in products%}
+        {% if filter == None%}
+        <div class="item">
             <div>
-                <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
-                <br>
-                <span>Stock Level: {{product.stock_quantity}}</span>
-                <br>
-                <span>Selling Cost: {{product.selling_cost}}</span>
-            </div>
-            <div>
-                <form action="/product/{{product.id}}/delete" method="POST">
-                    <button class="buttons" type="submit" value="Delete Product">Delete</button>
-                </form>
 
+                <div>
+                    <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
+                    <br>
+                    {% if product.stock_quantity < 5 %} {% if product.stock_quantity==0 %} <span style="color:red;">
+                        Stock Level: {{product.stock_quantity}}</span>
+                        {% else %}
+                        <span style="color:orange;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        {% else %}
+                        <span style="color:green;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        <br>
+                        <span>Selling Cost: £{{product.selling_cost}}</span>
+                </div>
+                <div>
+                    <form action="/products/{{product.id}}/delete" method="POST">
+                        <button class="buttons" type="submit" value="Delete Product">Delete</button>
+                    </form>
+
+                </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-    {% if product.manufacturer.name == filter %}
-    <div class="item">
-        <div>
-
+        {% endif %}
+        {% if product.manufacturer.name == filter %}
+        <div class="item">
             <div>
-                <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
-                <br>
-                <span>Stock Level: {{product.stock_quantity}}</span>
-                <br>
-                <span>Selling Cost: {{product.selling_cost}}</span>
-            </div>
-            <div>
-                <form action="/product/{{product.id}}/delete" method="POST">
-                    <button class="buttons" type="submit" value="Delete Product">Delete</button>
-                </form>
 
-            </div>
-        </div>
-    </div>
-    {% endif %}
-    {% if product.type == filter%}
-    <div class="item">
-        <div>
+                <div>
+                    <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
+                    <br>
+                    {% if product.stock_quantity < 5 %} {% if product.stock_quantity==0 %} <span style="color:red;">
+                        Stock Level: {{product.stock_quantity}}</span>
+                        {% else %}
+                        <span style="color:orange;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        {% else %}
+                        <span style="color:green;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        <br>
+                        <span>Selling Cost: £{{product.selling_cost}}</span>
+                </div>
+                <div>
+                    <form action="/products/{{product.id}}/delete" method="POST">
+                        <button class="buttons" type="submit" value="Delete Product">Delete</button>
+                    </form>
 
-            <div>
-                <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
-                <br>
-                <span>Stock Level: {{product.stock_quantity}}</span>
-                <br>
-                <span>Selling Cost: {{product.selling_cost}}</span>
-            </div>
-            <div>
-                <form action="/product/{{product.id}}/delete" method="POST">
-                    <button class="buttons" type="submit" value="Delete Product">Delete</button>
-                </form>
-
+                </div>
             </div>
         </div>
+        {% endif %}
+        {% if product.type == filter%}
+        <div class="item">
+            <div>
+
+                <div>
+                    <a href="/products/{{product.id}}">Name: {{product.manufacturer.name}} {{product.name}}</a>
+                    <br>
+                    {% if product.stock_quantity < 5 %} {% if product.stock_quantity==0 %} <span style="color:red;">
+                        Stock Level: {{product.stock_quantity}}</span>
+                        {% else %}
+                        <span style="color:orange;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        {% else %}
+                        <span style="color:green;">Stock Level: {{product.stock_quantity}}</span>
+                        {% endif %}
+                        <br>
+                        <span>Selling Cost: £{{product.selling_cost}}</span>
+                </div>
+                <div>
+                    <form action="/products/{{product.id}}/delete" method="post">
+                        <button class="buttons" type="submit" value="Delete Product">Delete</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% endfor %}
     </div>
-
-    {% endif %}
-
-    {% endfor %}
 </div>
 {% endblock %}

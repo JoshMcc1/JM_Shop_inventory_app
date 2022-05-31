@@ -1,4 +1,3 @@
-from itertools import product
 from models.product import Product
 from models.manufacturer import Manufacturer
 import repositories.product_repository as product_repository
@@ -152,15 +151,3 @@ product_10 = Product(
     "Car",
 )
 product_repository.save_product(product_10)
-
-results_1 = manufacturer_repository.select_all_manufacturers()
-
-results_2 = product_repository.select_all_products()
-
-for result in results_1:
-    print(result.__dict__)
-
-print("")
-
-for result in results_2:
-    print(result.__dict__)
