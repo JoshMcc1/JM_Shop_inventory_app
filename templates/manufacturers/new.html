@@ -1,22 +1,24 @@
 {% extends "base.html"%}
 {% block content %}
-
-<form action="/manufacturers" method="post">
-    <div>
+<h1>Add a New Manufacturer</h1>
+<form action="/manufacturers" method="post" class="container-new">
+    <div class="item-new">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="name" required autofocus>
     </div>
-    <div>
+    <div class="item-new">
         <label for="country_of_origin">Country of Origin</label>
         <input type="text" id="country_of_origin" name="country_of_origin" placeholder="country of origin" required>
     </div>
-    <div>
+    <div class="item-new">
         <label for="operating_status">Operating Status</label>
         <select id="operating_status" name="operating_status">
             <option value="1">True</option>
             <option value="0">False</option>
         </select>
     </div>
+
+    <button type="submit" class="buttons" style="width: 30%;">New Manufacturer</button>
 
 
 </form>

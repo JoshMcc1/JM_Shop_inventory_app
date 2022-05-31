@@ -1,21 +1,25 @@
 {% extends "base.html"%}
 {% block content%}
-{% for manufacturer in manufacturers %}
-<div>
-    <div>
-
+<h1>All Manufacturers</h1>
+<div class="container">
+    {% for manufacturer in manufacturers %}
+    <div class="item">
         <div>
-            <a href="/manufacturers/{{manufacturer.id}}">{{manufacturer.name}}</a>
-            <span>{{manufacturer.country_of_origin}}</span>
 
-        </div>
-        <div>
-            <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
-                <button type="submit" value="Delete Product">delete</button>
-            </form>
+            <div>
+                <a href="/manufacturers/{{manufacturer.id}}">Name: {{manufacturer.name}}</a>
+                <br>
+                <span>Country of Origin: {{manufacturer.country_of_origin}}</span>
 
+            </div>
+            <div>
+                <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
+                    <button type="submit" value="Delete Product" class="buttons">delete</button>
+                </form>
+
+            </div>
         </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock%}

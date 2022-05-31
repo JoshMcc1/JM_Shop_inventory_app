@@ -1,6 +1,8 @@
 {% extends "base.html"%}
 {% block content%}
-
+<h1>
+    Details
+</h1>
 <div>
     <h2>Vehicle: {{product.manufacturer.name}} {{product.name}}</h2>
     <p>Description: {{product.description}}</p>
@@ -8,7 +10,7 @@
     <p>Buying Cost: £{{product.buying_cost}}</p>
     <p>Selling Cost: £{{product.selling_cost}}</p>
     <P>Horse Power: {{product.horse_power}}</P>
-    <p>Top Speed: {{product.top_speed}}</p>
+    <p>Top Speed: {{product.top_speed}}MPH</p>
     <p>Vehicle Type: {{product.type}}</p>
     <p>Mark-up: £{{mark_up}}</p>
     <p><a href="/products/{{product.id}}/edit">Edit Product</a></p>

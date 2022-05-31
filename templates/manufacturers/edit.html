@@ -1,15 +1,16 @@
 {% extends "base.html"%}
 {% block content%}
-<form action="/manufacturers/{{manufacturer.id}}" method="post">
-    <div>
+<h1>Edit a Manufacturer</h1>
+<form action="/manufacturers/{{manufacturer.id}}" method="post" class="container-new">
+    <div class="item-new">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" value="{{manufacturer.name}}" required autofocus>
     </div>
-    <div>
+    <div class="item-new">
         <label for="country_of_origin">Country of Origin</label>
         <input type="text" id="country_of_origin" name="country_of_origin" value="{{manufacturer.country_of_origin}}">
     </div>
-    <div>
+    <div clas="item-new">
         <label for="operating_status">Operating Status</label>
         <select id="operating_status" name="operating_status" value="{{manufacturer.operating_status}}">
             <option value="1">True</option>
@@ -17,7 +18,7 @@
         </select>
     </div>
 
-    <button type="submit">Edit Manufacturer</button>
+    <button type="submit" class="buttons" style="width: 30%;">Edit Manufacturer</button>
 
 
 
