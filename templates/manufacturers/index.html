@@ -10,6 +10,12 @@
                 <a href="/manufacturers/{{manufacturer.id}}">Name: {{manufacturer.name}}</a>
                 <br>
                 <span>Country of Origin: {{manufacturer.country_of_origin}}</span>
+                <br>
+                {% if manufacturer.operating_status == False%}
+                <span style="color:red">Operating Status: {{manufacturer.operating_status}}</span>
+                {% else %}
+                <span style="color:green">Operating Status: {{manufacturer.operating_status}}</span>
+                {% endif %}
 
             </div>
             <div>

@@ -12,15 +12,19 @@ def get_products():
     manufacturers = manufacturer_repository.select_all_manufacturers()
     products = product_repository.select_all_products()
     active_products = []
+    product_types = []
     for product in products:
         if product.manufacturer.operating_status == True:
             active_products.append(product)
+        if not product_types.__contains__(product.type):
+            product_types.append(product.type)
 
     return render_template(
         "/products/index.html",
         products=active_products,
         filter=filter,
         manufacturers=manufacturers,
+        product_types=product_types,
     )
 
 
@@ -29,16 +33,20 @@ def get_products_by_type():
     filter = request.form["type"]
     manufacturers = manufacturer_repository.select_all_manufacturers()
     products = product_repository.select_all_products()
+    product_types = []
     active_products = []
     for product in products:
         if product.manufacturer.operating_status == True:
             active_products.append(product)
+        if not product_types.__contains__(product.type):
+            product_types.append(product.type)
 
     return render_template(
         "/products/index.html",
         products=active_products,
         filter=filter,
         manufacturers=manufacturers,
+        product_types=product_types,
     )
 
 
@@ -47,16 +55,20 @@ def get_products_by_manufacturer():
     filter = request.form["manufacturer"]
     manufacturers = manufacturer_repository.select_all_manufacturers()
     products = product_repository.select_all_products()
+    product_types = []
     active_products = []
     for product in products:
         if product.manufacturer.operating_status == True:
             active_products.append(product)
+        if not product_types.__contains__(product.type):
+            product_types.append(product.type)
 
     return render_template(
         "/products/index.html",
         products=active_products,
         filter=filter,
         manufacturers=manufacturers,
+        product_types=product_types,
     )
 
 

@@ -7,12 +7,9 @@
             <form action="/products/type" method="post" id="type">
                 <label for="type">Filter by Type</label>
                 <select id="type" name="type">
-                    <option value="Car">Car</option>
-                    <option value="SUV">SUV</option>
-                    <option value="Van">Van</option>
-                    <option value="Motorbike">Motorbike</option>
-                    <option value="Truck">Truck</option>
-                    <option value="People Carrier">People Carrier</option>
+                    {% for type in product_types %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
                 </select>
                 <button class="buttons" type="submit">Filter</button>
 
